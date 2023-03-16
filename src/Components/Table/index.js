@@ -9,7 +9,7 @@ import TableRow from '@mui/material/TableRow';
 import Paper from '@mui/material/Paper';
 import { Button } from '@mui/material';
 import Form from '../Form';
-
+import "./table.css"
 const StyledTableCell = styled(TableCell)(({ theme }) => ({
   [`&.${tableCellClasses.head}`]: {
     backgroundColor: theme.palette.common.black,
@@ -42,7 +42,7 @@ export default function TableData() {
             <StyledTableCell align="center">LAST NAME</StyledTableCell>
             <StyledTableCell align="center">DESIGNATION</StyledTableCell>
             <StyledTableCell align="center">CONTACT NUMBER</StyledTableCell>
-            <StyledTableCell align="center">ACTIONS</StyledTableCell>
+            <StyledTableCell align="center" colSpan={2}>ACTIONS</StyledTableCell>
           </TableRow>
         </TableHead>
         <TableBody>
@@ -52,9 +52,12 @@ export default function TableData() {
               <StyledTableCell align="center">Charde</StyledTableCell>
               <StyledTableCell align="center">SDE</StyledTableCell>
               <StyledTableCell align="center">0515554</StyledTableCell>
-              <StyledTableCell align="center">
+              <StyledTableCell align='center' >
+                <div className='btns'>
                 <Form tittle="EDIT"/>
-                <Button> Remove</Button>
+                <Form tittle="Remove"/>
+                </div>
+                
                 </StyledTableCell>
             </StyledTableRow>
           {/* ))} */}

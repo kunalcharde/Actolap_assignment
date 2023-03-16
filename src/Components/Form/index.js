@@ -51,14 +51,15 @@ export default function Form({ tittle }) {
   const [designation,setDesignationt] =useState("")
   const [contact,setContact] =useState("")
   const [error,seterror] = useState(false)
+
   const handleClickOpen = () => {
     setOpen(true);
   };
   const handleClose = () => {
     setOpen(false);
   };
-  const handleSubmit =()=>{
-    
+  const handleSubmit =(e)=>{
+    console.log(e.target.value)
   }
   return (
     <div>
@@ -77,7 +78,7 @@ export default function Form({ tittle }) {
           Add Employee
         </BootstrapDialogTitle>
         <DialogContent dividers>
-          
+         
           <Typography gutterBottom>
             <Grid container xs={12} spacing={2}>
               <Grid item xs={6}>
@@ -93,12 +94,12 @@ export default function Form({ tittle }) {
                   
             <Grid item sm={6}>
                 <label>Designation*</label>
-                <TextField id="outlined-basic" label="Outlined" onChange={(e)=> setDesignationt(e.target.value)} required/>
+                <TextField id="outlined-basic"  onChange={(e)=> setDesignationt(e.target.value)} required/>
                 {error?<p>Error</p>:""}
               </Grid>
               <Grid item sm={6}>
-                <label>Contact Number**</label>
-                <TextField id="outlined-basic" label="Outlined" onChange={(e)=> setContact(e.target.value)} required />
+                <label>Contact Number*</label>
+                <TextField id="outlined-basic"  onChange={(e)=> setContact(e.target.value)} required />
                 {error?<p>Error</p>:""}
               </Grid>
               </Grid>   
@@ -106,10 +107,14 @@ export default function Form({ tittle }) {
           
         </DialogContent>
         <DialogActions>
+        <Button autoFocus onClick={handleSubmit} type="submit">
+            Cancel
+          </Button>
           <Button autoFocus onClick={handleSubmit} type="submit">
             Add
           </Button>
         </DialogActions>
+        <Form/>
       </BootstrapDialog>
     </div>
   );

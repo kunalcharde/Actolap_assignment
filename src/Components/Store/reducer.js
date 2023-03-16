@@ -1,17 +1,29 @@
-import { ADD_USER } from "./Actions"
-import { EDIT_USER } from "./Actions"
-import { DELETE_USER } from "./Actions"
-export const reucer =(action)=>{
-    switch(action){
-        case (ADD_USER):{
-            return action.payload;
-        }
-        case (EDIT_USER):{
-            const {data,id} = action.payload
-            return data.filter((item)=> item.id==id)
-        }
-        case (DELETE_USER) :{
-            return data.filter((item)=> item.id!=id)
-        }
+
+const initialState =[]
+const rootReducer = (state = initialState, action) => {
+    switch (action.type) {
+      case 'ADD_USER':
+        return {
+          ...state,
+          users: [...state.users, action.payload],
+        };
+      case 'UPDATE_USER':
+        const updatedUsers = [...state.users];
+        updatedUsers[action.payload.index] = action.payload.user;
+        return {
+          ...state,
+          users: updatedUsers,
+        };
+      case 'DELETE_USER':
+        const remainingUsers = [...state.users];
+        remainingUsers.splice(action.payload, 1);
+        return {
+          ...state,
+          users: remainingUsers,
+        };
+      default:
+        return state;
     }
-}
+  };
+  
+  export default rootReducer;
